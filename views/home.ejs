@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignStream | Home</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">SignStream</div>
+    <nav class="nav-actions">
+      <a href="/upload"><button>Create</button></a>
+      <button>Notifications</button>
+      <a href="/profile"><button>Profile</button></a>
+      <a href="/logout"><button>Logout</button></a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Trending Videos</h1>
+    <div class="video-grid">
+        <% videos.forEach(video => { %>
+            <div class="video-card">
+                <video>
+                    <source src="<%= video.url %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="description">
+                    <strong><%= video.user?.name || 'Unknown' %></strong><br>
+                    <%= video.description %>
+                </p>
+            </div>
+        <% }) %>
+    </div>
+  </main>
+
+  <script src="/js/home.js"></script>
+</body>
+
+<script>
+  document.querySelectorAll('.video-card video').forEach(video => {
+    video.removeAttribute('controls');
+
+    video.addEventListener('mouseenter', () => {
+      video.setAttribute('controls', true);
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.removeAttribute('controls');
+    });
+  });
+</script>
+
+</html>

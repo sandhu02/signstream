@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SignStream Register | CodingNepal</title>
+  <link rel="stylesheet" href="/css/signin.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <form action="/register" method="POST">
+      <h2>Register</h2>
+
+      <div class="input-field">
+        <input type="name" name="name" required />
+        <label>Enter your Name</label>
+      </div>
+
+      <div class="input-field">
+        <input type="email" name="email" required />
+        <label>Enter your email</label>
+      </div>
+
+      <div class="input-field">
+        <input type="password" name="password" required />
+        <label>Enter your password</label>
+      </div>
+
+      <div class="input-field">
+        <input type="password" name="confirmPassword" required />
+        <label>Confirm your password</label>
+      </div>
+
+      <span class="buttons-row">
+        <button type="submit">Sign Up</button>
+      </span>
+
+      <div class="register">
+        <p>Already have an account? <a href="/signin">Login</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

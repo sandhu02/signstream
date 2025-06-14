@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= user.name %>'s Profile</title>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">SignStream</div>
+    <nav class="nav-actions">
+      <a href="/upload"><button>Create</button></a>
+      <a href="/home"><button>Home</button></a>
+      <a href="/logout"><button>Logout</button></a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Welcome, <%= user.name %></h1>
+    <p><strong>Email:</strong> <%= user.email %></p>
+
+    <h2 class="title">Your Uploaded Videos</h2>
+    
+    <% if (videos.length === 0) { %>
+      <p>You haven’t uploaded any videos yet.</p>
+    <% } else { %>
+      <div class="video-grid">
+        <% videos.forEach(video => { %>
+          <div class="video-card">
+            <video controls>
+              <source src="<%= video.url %>" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="description"><%= video.description %></p>
+            <form action="/delete/<%= video._id %>" method="POST">
+              <button type="submit" style="background-color:#888;">Delete</button>
+            </form>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>
