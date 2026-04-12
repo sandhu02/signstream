@@ -1,6 +1,6 @@
 services:
   signstream:
-    image: node:latest
+    image: node:18
     working_dir: /signstream
     volumes:
       - .:/signstream
@@ -15,6 +15,7 @@ services:
     depends_on:
       - mongo
     command: sh -c "npm i && npm start"
+    restart: always
 
   mongo:
     image: mongo:latest
