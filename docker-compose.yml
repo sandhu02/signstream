@@ -14,7 +14,7 @@ services:
       MONGODB_STRING : ${MONGODB_STRING}
     depends_on:
       - mongo
-    command: sh -c "npm i && node server.js"
+    command: sh -c "npm i && node index.js"
     restart: always
 
   mongo:
